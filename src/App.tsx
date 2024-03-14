@@ -4,6 +4,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { TodoContainer } from "./components/TodoContainer";
 import { RegisterUser } from "./components/RegisterUser";
 import { LoginUser } from "./components/LoginUser";
+import { Dashboard } from "./components/Dashboard";
 
 const router = createBrowserRouter([
   {
@@ -21,6 +22,10 @@ const router = createBrowserRouter([
   {
     path: "/login",
     element: <LoginUser />,
+  },
+  {
+    path: "/dashboard",
+    element: <Dashboard />,
   },
 ]);
 

@@ -1,5 +1,6 @@
 import { useMutation } from "@tanstack/react-query";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 type TLoginUserInput = {
   password: string;
@@ -33,6 +34,7 @@ type TLoginUserOutput = {
 };
 
 export function LoginUser() {
+  const navigate = useNavigate();
   const loginUserMutation = useMutation<
     TLoginUserOutput,
     Error,
@@ -56,6 +58,10 @@ export function LoginUser() {
     },
     onSuccess(data) {
       console.log("data", data);
+
+      localStorage.setItem("access_token", data.data.accessToken);
+      localStorage.setItem("refresh_token", data.data.refreshToken);
+      navigate("/dashboard");
     },
     onError(error) {
       console.log("error", error);
